@@ -5,11 +5,21 @@
     box-sizing: border-box;
 }
 
+:root {
+    --primary-color: #3b82f6;
+    --primary-hover: #2563eb;
+    --primary-light: rgba(59, 130, 246, 0.1);
+    --bg-color: #f8fafc;
+    --text-color: #334155;
+    --accent-color: #3b82f6;
+}
+
 body {
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
-    background: #f8fafc;
-    color: #334155;
+    background: var(--bg-color);
+    color: var(--text-color);
     line-height: 1.6;
+    transition: all 0.3s ease;
 }
 
 /* App Container */
@@ -45,6 +55,43 @@ body {
 .header-right {
     display: flex;
     gap: 0.75rem;
+    align-items: center;
+}
+
+/* Theme Selector */
+.theme-selector {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-right: 1rem;
+    padding: 0.5rem;
+    background: white;
+    border: 1px solid #e2e8f0;
+    border-radius: 6px;
+}
+
+.theme-label {
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: var(--text-color);
+    white-space: nowrap;
+}
+
+.theme-label i {
+    color: var(--primary-color);
+    margin-right: 0.25rem;
+}
+
+.theme-select {
+    border: none;
+    background: transparent;
+    color: var(--text-color);
+    font-size: 0.875rem;
+    font-weight: 500;
+    outline: none;
+    cursor: pointer;
+    padding: 0.25rem;
+    min-width: 120px;
 }
 
 /* Buttons */
@@ -923,4 +970,251 @@ body {
     100% {
         left: 100%;
     }
+}
+
+/* Theme Styles */
+body.theme-dark {
+    background: var(--bg-color);
+    color: var(--text-color);
+}
+
+body.theme-dark .header,
+body.theme-dark .sidebar,
+body.theme-dark .canvas-header,
+body.theme-dark .properties-panel,
+body.theme-dark .modal-content {
+    background: #374151 !important;
+    border-color: #4b5563 !important;
+    color: #f9fafb !important;
+}
+
+body.theme-dark .form-element,
+body.theme-dark .form-row {
+    background: #374151 !important;
+    border-color: #4b5563 !important;
+}
+
+body.theme-dark .canvas-area {
+    background: var(--bg-color) !important;
+}
+
+body.theme-dark .theme-selector {
+    background: #4b5563 !important;
+    border-color: #6b7280 !important;
+}
+
+body.theme-dark .theme-label,
+body.theme-dark .theme-select {
+    color: #f9fafb !important;
+}
+
+body.theme-dark .theme-select option {
+    background: #374151 !important;
+    color: #f9fafb !important;
+    border: none !important;
+}
+
+body.theme-dark .theme-select:hover {
+    background: rgba(75, 85, 99, 0.3) !important;
+}
+
+body.theme-dark .theme-select:focus {
+    background: rgba(75, 85, 99, 0.5) !important;
+    outline: none !important;
+}
+
+body.theme-dark .sidebar-header h3,
+body.theme-dark .panel-header h3,
+body.theme-dark .modal-header h3,
+body.theme-dark .header-left h1 {
+    color: #f9fafb !important;
+}
+
+body.theme-dark .draggable-element {
+    background: #4b5563 !important;
+    border-color: #6b7280 !important;
+}
+
+body.theme-dark .draggable-element span {
+    color: #f9fafb !important;
+}
+
+body.theme-dark .form-input,
+body.theme-dark .form-textarea,
+body.theme-dark .form-select,
+body.theme-dark .property-input,
+body.theme-dark .property-select,
+body.theme-dark .property-textarea {
+    background: #4b5563 !important;
+    border-color: #6b7280 !important;
+    color: #f9fafb !important;
+}
+
+body.theme-dark .form-label,
+body.theme-dark .property-label {
+    color: #e5e7eb !important;
+}
+
+body.theme-dark .canvas-title input {
+    color: #f9fafb !important;
+    background: transparent !important;
+}
+
+body.theme-dark .canvas-title input:focus {
+    background: rgba(75, 85, 99, 0.3) !important;
+}
+
+body.theme-dark .drop-placeholder {
+    color: #9ca3af !important;
+}
+
+body.theme-dark .drop-placeholder h3 {
+    color: #d1d5db !important;
+}
+
+body.theme-dark .column-drop-zone {
+    border-color: #6b7280 !important;
+    color: #9ca3af !important;
+}
+
+body.theme-dark .btn-outline {
+    background: #4b5563 !important;
+    color: #f9fafb !important;
+    border-color: #6b7280 !important;
+}
+
+body.theme-dark .btn-outline:hover {
+    background: #6b7280 !important;
+    border-color: #9ca3af !important;
+}
+
+body.theme-dark .code-content {
+    background: #1f2937 !important;
+}
+
+body.theme-dark .element-category h4 {
+    color: #9ca3af !important;
+}
+
+body.theme-dark .no-selection {
+    color: #9ca3af !important;
+}
+
+body.theme-dark .no-selection i {
+    color: #6b7280 !important;
+}
+
+body.theme-dark .property-help {
+    color: #9ca3af !important;
+}
+
+body.theme-dark .column-info {
+    background: #4b5563 !important;
+    border-color: #6b7280 !important;
+    color: #e5e7eb !important;
+}
+
+body.theme-dark .tab-btn {
+    color: #9ca3af !important;
+}
+
+body.theme-dark .btn-close {
+    color: #9ca3af !important;
+}
+
+body.theme-dark .btn-close:hover {
+    background: #4b5563 !important;
+    color: #f9fafb !important;
+}
+
+/* Dark theme scrollbar */
+body.theme-dark ::-webkit-scrollbar-track {
+    background: #374151 !important;
+}
+
+body.theme-dark ::-webkit-scrollbar-thumb {
+    background: #6b7280 !important;
+}
+
+body.theme-dark ::-webkit-scrollbar-thumb:hover {
+    background: #9ca3af !important;
+}
+
+body.theme-gradient .canvas-area {
+    background: var(--bg-color);
+}
+
+body.theme-gradient .header,
+body.theme-gradient .sidebar,
+body.theme-gradient .canvas-header,
+body.theme-gradient .properties-panel {
+    background: rgba(255, 255, 255, 0.9);
+    backdrop-filter: blur(10px);
+}
+
+/* Update primary colors to use CSS variables */
+.btn-primary,
+.btn-edit,
+.btn-submit,
+.form-input:focus,
+.form-textarea:focus,
+.form-select:focus,
+.tab-btn.active,
+.tab-btn:hover,
+.form-element:hover,
+.form-element.selected,
+.form-row:hover,
+.form-row.selected,
+.column-drop-zone.drag-over,
+.drop-zone.drag-over {
+    border-color: var(--primary-color) !important;
+    color: var(--primary-color) !important;
+}
+
+.btn-primary,
+.btn-edit,
+.btn-submit {
+    background: var(--primary-color) !important;
+    color: white !important;
+}
+
+.btn-primary:hover,
+.btn-edit:hover,
+.btn-submit:hover {
+    background: var(--primary-hover) !important;
+}
+
+.form-input:focus,
+.form-textarea:focus,
+.form-select:focus {
+    box-shadow: 0 0 0 3px var(--primary-light) !important;
+}
+
+.form-element:hover,
+.form-element.selected,
+.form-row:hover,
+.form-row.selected {
+    box-shadow: 0 4px 12px var(--primary-light) !important;
+}
+
+.form-element.selected,
+.form-row.selected {
+    box-shadow: 0 0 0 3px var(--primary-light) !important;
+}
+
+.draggable-element:hover,
+.draggable-element i,
+.header-left i,
+.theme-label i {
+    color: var(--primary-color) !important;
+}
+
+.column-drop-zone.drag-over {
+    background: var(--primary-light) !important;
+    color: var(--primary-color) !important;
+}
+
+.drop-zone.drag-over {
+    background: var(--primary-light) !important;
+    border-color: var(--primary-color) !important;
 }

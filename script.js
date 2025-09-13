@@ -8,6 +8,7 @@ class FormBuilder {
         this.elementCounter = 0;
         this.rowCounter = 0;
         this.currentTab = 'html';
+        this.currentTheme = 'default';
         
         this.init();
     }
@@ -39,6 +40,9 @@ class FormBuilder {
         
         // Form title change
         document.getElementById('formTitle').addEventListener('input', () => this.updateFormTitle());
+        
+        // Theme selector change
+        document.getElementById('themeSelect').addEventListener('change', (e) => this.changeTheme(e.target.value));
         
         // Close modals on outside click
         document.querySelectorAll('.modal').forEach(modal => {
@@ -942,6 +946,92 @@ class FormBuilder {
     
     updateFormTitle() {
         this.renderForm();
+    }
+    
+    changeTheme(theme) {
+        this.currentTheme = theme;
+        
+        // Remove any existing theme classes
+        const body = document.body;
+        body.classList.remove(
+            'theme-default', 'theme-purple', 'theme-green', 'theme-orange',
+            'theme-red', 'theme-dark', 'theme-gradient'
+        );
+        
+        // Add the new theme class
+        body.classList.add(`theme-${theme}`);
+        
+        // Update CSS custom properties for the theme
+        this.updateThemeColors(theme);
+    }
+    
+    updateThemeColors(theme) {
+        const root = document.documentElement;
+        
+        const themes = {
+            default: {
+                '--primary-color': '#3b82f6',
+                '--primary-hover': '#2563eb',
+                '--primary-light': 'rgba(59, 130, 246, 0.1)',
+                '--bg-color': '#f8fafc',
+                '--text-color': '#334155',
+                '--accent-color': '#3b82f6'
+            },
+            purple: {
+                '--primary-color': '#8b5cf6',
+                '--primary-hover': '#7c3aed',
+                '--primary-light': 'rgba(139, 92, 246, 0.1)',
+                '--bg-color': '#faf5ff',
+                '--text-color': '#4c1d95',
+                '--accent-color': '#8b5cf6'
+            },
+            green: {
+                '--primary-color': '#10b981',
+                '--primary-hover': '#059669',
+                '--primary-light': 'rgba(16, 185, 129, 0.1)',
+                '--bg-color': '#f0fdf4',
+                '--text-color': '#065f46',
+                '--accent-color': '#10b981'
+            },
+            orange: {
+                '--primary-color': '#f59e0b',
+                '--primary-hover': '#d97706',
+                '--primary-light': 'rgba(245, 158, 11, 0.1)',
+                '--bg-color': '#fffbeb',
+                '--text-color': '#92400e',
+                '--accent-color': '#f59e0b'
+            },
+            red: {
+                '--primary-color': '#ef4444',
+                '--primary-hover': '#dc2626',
+                '--primary-light': 'rgba(239, 68, 68, 0.1)',
+                '--bg-color': '#fef2f2',
+                '--text-color': '#991b1b',
+                '--accent-color': '#ef4444'
+            },
+            dark: {
+                '--primary-color': '#60a5fa',
+                '--primary-hover': '#3b82f6',
+                '--primary-light': 'rgba(96, 165, 250, 0.2)',
+                '--bg-color': '#1f2937',
+                '--text-color': '#f9fafb',
+                '--accent-color': '#60a5fa'
+            },
+            gradient: {
+                '--primary-color': 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
+                '--primary-hover': 'linear-gradient(135deg, #5a67d8 0%, #6b46c1 100%)',
+                '--primary-light': 'rgba(102, 126, 234, 0.1)',
+                '--bg-color': 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
+                '--text-color': '#1a202c',
+                '--accent-color': '#667eea'
+            }
+        };
+        
+        const selectedTheme = themes[theme] || themes.default;
+        
+        Object.keys(selectedTheme).forEach(property => {
+            root.style.setProperty(property, selectedTheme[property]);
+        });
     }
     
     showPreview() {

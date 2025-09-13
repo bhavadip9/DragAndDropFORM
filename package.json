@@ -19,7 +19,7 @@
     "code-generator",
     "shopify-like"
   ],
-  "author": "Your Name",
+  "author": "Bhavadip Dhandhlya",
   "license": "MIT",
   "devDependencies": {
     "http-server": "^14.1.1",
@@ -28,7 +28,7 @@
   "dependencies": {},
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/username/drag-drop-form-builder.git"
+    "url": "git+https://github.com/bhavadip9/DragAndDropFORM.git"
   },
   "bugs": {
     "url": "https://github.com/username/drag-drop-form-builder/issues"
